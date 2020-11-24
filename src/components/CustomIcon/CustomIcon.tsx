@@ -2,14 +2,15 @@ import React from 'react'
 import './CustomIcon.css'
 
 interface CustomIconProps {
-   children: JSX.Element | JSX.Element[]
+   children: JSX.Element | JSX.Element[],
+   to?: string,
 }
 
 function CustomIcon(props: CustomIconProps) {
    return (
-      <div className="Custom-Icon">
+      <a href={props.to} className="Custom-Icon" rel="noreferrer" target="_blank">
          {props.children}
-      </div>
+      </a>
    )
 }
 

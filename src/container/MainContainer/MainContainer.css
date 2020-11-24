@@ -1,0 +1,12 @@
+.Main-Container {
+  color: #ffffff;
+  padding: 64px;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 1 0px;
+  z-index: 1;
+}
+
+.Main-Item {
+  flex: 1 1 0px;
+}

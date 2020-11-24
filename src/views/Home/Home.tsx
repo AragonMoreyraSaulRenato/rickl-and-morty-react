@@ -4,11 +4,13 @@ import { ReactComponent as IconFacebook } from "../../assets/svg/facebook.svg";
 import { ReactComponent as IconTwitter } from "../../assets/svg/twitter.svg";
 import { ReactComponent as IconLinkedin } from "../../assets/svg/linkedin.svg";
 import { ReactComponent as IconGitHub } from "../../assets/svg/github.svg";
+import RickAndMortyImg from "../../assets/img/image.png";
 import CustomIcon from "../../components/CustomIcon";
+import MainContainer from "../../container/MainContainer";
 
-function Home() {
+function Home(): JSX.Element {
 	return (
-		<main className="container Home">
+		<MainContainer>
 			<div className="Home-Info Home-Item">
 				<p className="Typography h2">Hello!</p>
 				<p className="Typography h3 Home-Title">I'm Saul</p>
@@ -16,19 +18,24 @@ function Home() {
 					This is a small application that use TypeScript, React Hooks & GraphQL
         		</p>
 				<div className="container Home-Icon-Container">
-					<CustomIcon ><IconFacebook /></CustomIcon>
-					<CustomIcon ><IconTwitter /></CustomIcon>
-					<CustomIcon ><IconLinkedin /></CustomIcon>
-					<CustomIcon ><IconGitHub /></CustomIcon>
+					<CustomIcon to='https://www.facebook.com/saulrmoreyra/'>
+						<IconFacebook />
+					</CustomIcon>
+					<CustomIcon to="https://twitter.com/saulrmoreyra">
+						<IconTwitter />
+					</CustomIcon>
+					<CustomIcon to="https://www.linkedin.com/in/saulrmoreyra/">
+						<IconLinkedin />
+					</CustomIcon>
+					<CustomIcon to="https://github.com/AragonMoreyraSaulRenato">
+						<IconGitHub />
+					</CustomIcon>
 				</div>
 			</div>
-			<div className="Home-Img Home-Item">
-				<h2>Hello</h2>
-				<h2>Hello</h2>
-				<h2>Hello</h2>
-				<h2>Hello</h2>
+			<div className="container Home-Img Home-Item">
+				<img src={RickAndMortyImg} alt="RickAndNorty" />
 			</div>
-		</main>
+		</MainContainer>
 	);
 }
 

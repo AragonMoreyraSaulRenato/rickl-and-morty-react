@@ -1,0 +1,10 @@
+.Custom-Icon {
+  height: 54px;
+  width: 54px;
+  fill: #cacaca;
+  margin-right: 16px;
+}
+
+.Custom-Icon:hover {
+  fill: #f7f7f7;
+}

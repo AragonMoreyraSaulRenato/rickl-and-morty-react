@@ -1,0 +1,10 @@
+.CustomLink {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+
+}
+
+.CustomLink:hover{
+    border-bottom: 2px solid #ffffff;
+}

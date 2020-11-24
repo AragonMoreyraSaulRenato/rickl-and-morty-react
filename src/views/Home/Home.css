@@ -1,0 +1,25 @@
+.Home {
+  color: #ffffff;
+  padding: 64px;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 1 0px;
+  z-index: 1;
+}
+
+.Home-Item {
+  flex: 1 1 0px;
+}
+
+.Home-Title {
+  color: #68a50a;
+}
+
+.Home-Icon {
+  margin-right: 16px;
+}
+
+.Home-Icon-Container {
+  margin-top: 28px;
+  margin-bottom: 28px;
+}

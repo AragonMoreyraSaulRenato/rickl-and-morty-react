@@ -10,3 +10,9 @@
 .Main-Item {
   flex: 1 1 0px;
 }
+
+@media (max-width: 600px) {
+  .Main-Container {
+    padding: 24px;
+  }
+}

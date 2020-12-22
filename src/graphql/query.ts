@@ -11,6 +11,7 @@ query {
        id,
        name, 
        status,
+      image
      }
    }
  }

@@ -1,10 +1,20 @@
 .Main-Container {
   color: #ffffff;
+  margin-top: 64px;
   padding: 64px;
-  justify-content: space-between;
-  align-items: center;
   flex: 1 1 0px;
   z-index: 1;
+}
+
+.Main-Container-Center {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Main-Container-Top {
+  justify-content: flex-start;
+  align-items: center;
+  direction: column;
 }
 
 .Main-Item {
@@ -13,6 +23,7 @@
 
 @media (max-width: 600px) {
   .Main-Container {
-    padding: 24px;
+    margin-top: 56px;
+    padding: 36px;
   }
 }

@@ -1,10 +1,10 @@
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import {PRIMARY_COLOR} from '../../colors'
+import { PRIMARY_COLOR } from '../../colors'
 
 export const useStyleAppBar = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
-			zIndex: 1,
+			zIndex: 10,
 		},
 		appBar: {
 			backgroundColor: PRIMARY_COLOR
@@ -20,7 +20,7 @@ export const useStyleAppBar = makeStyles((theme: Theme) =>
 			alignItems: 'center',
 			justifyContent: 'center',
 		},
-		imageLogo : {
+		imageLogo: {
 			maxHeight: 32
 		}
 	}),

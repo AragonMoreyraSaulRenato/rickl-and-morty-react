@@ -8,9 +8,11 @@ import { useStylesCharacterCard } from './StyleCharacterCard';
 import { Character } from '../../classes';
 import { average } from 'color.js'
 import Color from 'color';
+import { TEXT_WHITE_COLOR } from '../../colors';
 
 interface ICharacterCard {
    data?: Character,
+   loading?: boolean
 }
 
 
@@ -25,6 +27,8 @@ export default function CharacterCard(props: ICharacterCard): JSX.Element {
       setColor(cardColor);
    })
 
+   if (color === '') return <div></div>;
+
    return (
       <CardActionArea className={classes.actionArea}>
          <Card className={classes.card}>
@@ -37,7 +41,7 @@ export default function CharacterCard(props: ICharacterCard): JSX.Element {
             />
             <CardContent
                className={classes.content}
-               style={{ background: color }}>
+               style={{ background: color || TEXT_WHITE_COLOR }}>
                <Typography gutterBottom variant="h5" component="h2">
                   Lizard
           </Typography>

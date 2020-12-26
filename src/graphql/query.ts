@@ -11,7 +11,8 @@ query Characters($page: Int!){
 			id,
 			name, 
 			status,
-			image
+			image,
+			species
 		}
 	}
 }

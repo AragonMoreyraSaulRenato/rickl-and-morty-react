@@ -6,6 +6,7 @@ import { BACKGROUND_COLOR } from '../../colors';
 export const useStylesCharacterCard = makeStyles(() => createStyles({
    actionArea: {
       maxWidth: 256,
+      minWidth: 256,
       borderRadius: 16,
       transition: '0.2s',
       '&:hover': {
@@ -29,4 +30,11 @@ export const useStylesCharacterCard = makeStyles(() => createStyles({
    media: {
       height: 256,
    },
+   characterName: {
+      color: 'white',
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      fontWeight: 700,
+   }
 }));

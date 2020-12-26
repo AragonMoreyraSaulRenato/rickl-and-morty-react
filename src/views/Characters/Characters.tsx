@@ -75,7 +75,6 @@ function Characters(): JSX.Element {
                alignItems="center"
             >
                <Pagination count={data?.characters?.info?.pages} page={page} onChange={handleChange} className={classes.root} />
-
             </Grid>
 
             <Grid item container spacing={4}

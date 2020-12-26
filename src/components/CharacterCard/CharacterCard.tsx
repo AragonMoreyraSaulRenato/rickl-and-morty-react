@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+
 import { useStylesCharacterCard } from './StyleCharacterCard';
 import { Character } from '../../classes';
+
 import { average } from 'color.js'
 import Color from 'color';
 import { TEXT_WHITE_COLOR } from '../../colors';
+import AliveStatus from '../AliveStatus/AliveStatus';
 
 interface ICharacterCard {
    data?: Character,
@@ -17,37 +20,39 @@ interface ICharacterCard {
 
 
 export default function CharacterCard(props: ICharacterCard): JSX.Element {
-   const [color, setColor] = useState('');
+   const [color, setColor] = useState(TEXT_WHITE_COLOR);
    const classes = useStylesCharacterCard();
    const { data } = props;
 
 
-   average(`${data?.image}`).then((colorDominat) => {
-      const cardColor: string = Color(colorDominat).hex()
-      setColor(cardColor);
-   })
+   useEffect(() => {
+      average(`${data?.image}`).then((colorDominat) => {
+         const cardColor: string = Color(colorDominat).hex()
+         setColor(cardColor);
+      })
+   }, [data?.image])
 
-   if (color === '') return <div></div>;
 
    return (
       <CardActionArea className={classes.actionArea}>
          <Card className={classes.card}>
             <CardMedia
                component="img"
-               alt="Contemplative Reptile"
+               alt={data?.name}
                className={classes.media}
                image={data?.image}
-               title="Contemplative Reptile"
+               title={data?.name}
             />
             <CardContent
                className={classes.content}
                style={{ background: color || TEXT_WHITE_COLOR }}>
-               <Typography gutterBottom variant="h5" component="h2">
-                  Lizard
-          </Typography>
+               <Typography gutterBottom variant="h5" component="p" className={classes.characterName}>
+                  {data?.name}
+               </Typography>
                <Typography variant="body2" color="textSecondary" component="p">
-                  Lizards are a widespread
-          </Typography>
+                  <AliveStatus status={data?.status} />
+                  {data?.status} - {data?.species}
+               </Typography>
             </CardContent>
          </Card>
       </CardActionArea>

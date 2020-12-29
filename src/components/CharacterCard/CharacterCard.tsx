@@ -34,7 +34,7 @@ export default function CharacterCard(props: ICharacterCard): JSX.Element {
 
 
    return (
-      <CardActionArea className={classes.actionArea}>
+      <CardActionArea className={classes.actionArea} component={"section"}>
          <Card className={classes.card}>
             <CardMedia
                component="img"
@@ -46,10 +46,10 @@ export default function CharacterCard(props: ICharacterCard): JSX.Element {
             <CardContent
                className={classes.content}
                style={{ background: color || TEXT_WHITE_COLOR }}>
-               <Typography gutterBottom variant="h5" component="p" className={classes.characterName}>
+               <Typography variant="h5" component="p" className={classes.characterName}>
                   {data?.name}
                </Typography>
-               <Typography variant="body2" color="textSecondary" component="p">
+               <Typography variant="body2" component="p" className={classes.characterDetails} >
                   <AliveStatus status={data?.status} />
                   {data?.status} - {data?.species}
                </Typography>

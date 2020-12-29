@@ -1,14 +1,14 @@
-import {Episode} from './Episode'
+import { Episode } from './Episode'
 export interface Character {
-  id: string ,
-  name?: string ,
-  status?: string ,
-  species?: string ,
-  type?: string ,
-  gender?: string ,
+  id: string,
+  name?: string,
+  status?: string,
+  species?: string,
+  type?: string,
+  gender?: string,
   origin?: Location,
   location?: Location,
-  image?: string ,
-  episode?: Episode [],
-  created?: string ,
+  image?: string,
+  episode?: Episode[],
+  created?: string,
 }

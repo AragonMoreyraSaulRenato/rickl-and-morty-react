@@ -36,5 +36,12 @@ export const useStylesCharacterCard = makeStyles(() => createStyles({
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       fontWeight: 700,
+   },
+   characterDetails: {
+      color: '#DBDBDB',
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      fontWeight: 200,
    }
 }));

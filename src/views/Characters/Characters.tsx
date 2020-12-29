@@ -1,51 +1,46 @@
 import React, { useState } from 'react';
-
-import MainContainer from '../../container/MainContainer';
+//Material UI
 import { Character } from '../../classes'
 import { CharacterCard } from '../../components'
 import { Grid } from '@material-ui/core';
 import SearchBar from '../../components/SearchBar';
 import Pagination from '@material-ui/lab/Pagination';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
-import { TEXT_WHITE_COLOR, PRIMARY_COLOR, SECONDARY_COLOR } from '../../colors'
-
+import { useStylesCharacters } from './StylesCharacters'
 //Graphql
-import { GET_CHARACTERS } from '../../graphql/query'
+import { GET_CHARACTERS } from '../../graphql/query';
 import { useQuery } from '@apollo/client'
 
-const useStyles = makeStyles((theme) =>
-   createStyles({
-      root: {
-         "& .MuiPaginationItem-root": {
-            color: TEXT_WHITE_COLOR
-         },
-         "& .Mui-selected": {
-            background: PRIMARY_COLOR,
-            '&:hover': {
-               background: SECONDARY_COLOR,
-            },
-         }
-      },
-   }),
-);
+import MainContainer from '../../container/MainContainer';
 
 
 function Characters(): JSX.Element {
-   const classes = useStyles();
-   const [page, setPage] = useState(1)
+   const classes = useStylesCharacters();
+   const [page, setPage] = useState(1);
+   const [search, setSearch] = useState("");
 
    const { loading, error, data, fetchMore } = useQuery(GET_CHARACTERS, {
-      variables: { page: 1 },
+      variables: {
+         page, search
+      },
    });
 
-
-
-   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-      setPage(value);
+   const getCharacters = (page: number = 1, search: string = "") => {
       if (fetchMore)
          fetchMore({
-            variables: { page: value },
+            variables: {
+               page: page,
+               search: search
+            },
          });
+   }
+
+   const handleChangePage = (event: React.ChangeEvent<unknown>, value: number) => {
+      setPage(value);
+      getCharacters(value, search);
+   };
+
+   const handleSearch = () => {
+      getCharacters(1, search);
    };
 
    if (loading) return <MainContainer>
@@ -65,7 +60,10 @@ function Characters(): JSX.Element {
             alignItems="stretch" >
 
             <Grid item>
-               <SearchBar />
+               <SearchBar
+                  search={search}
+                  setSearch={setSearch}
+                  onSearch={handleSearch} />
             </Grid>
 
             <Grid item
@@ -74,8 +72,13 @@ function Characters(): JSX.Element {
                justify="flex-start"
                alignItems="center"
             >
-               <Pagination count={data?.characters?.info?.pages} page={page} onChange={handleChange} className={classes.root} />
+               <Pagination
+                  count={data?.characters?.info?.pages}
+                  page={page}
+                  onChange={handleChangePage}
+                  className={classes.root} />
             </Grid>
+
 
             <Grid item container spacing={4}
                justify="center"
@@ -83,7 +86,7 @@ function Characters(): JSX.Element {
 
                {
                   data?.characters?.results?.map((item: Character) => {
-                     return <Grid item key={`card-character${item.id}`}>
+                     return <Grid item key={`item-card-character-${item.id}`}>
                         <CharacterCard data={item} />
                      </Grid>
                   })
@@ -91,7 +94,7 @@ function Characters(): JSX.Element {
             </Grid>
 
          </Grid>
-      </MainContainer>
+      </MainContainer >
    )
 }
 

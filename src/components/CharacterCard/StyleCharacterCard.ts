@@ -2,11 +2,10 @@ import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Color from 'color';
 import { BACKGROUND_COLOR } from '../../colors';
 
-
+const size = 220;
 export const useStylesCharacterCard = makeStyles(() => createStyles({
    actionArea: {
-      maxWidth: 256,
-      minWidth: 256,
+      maxWidth: size,
       borderRadius: 16,
       transition: '0.2s',
       '&:hover': {
@@ -28,7 +27,8 @@ export const useStylesCharacterCard = makeStyles(() => createStyles({
       padding: '1rem 1.5rem 1.5rem',
    },
    media: {
-      height: 256,
+      width: size,
+      height: size,
    },
    characterName: {
       color: 'white',

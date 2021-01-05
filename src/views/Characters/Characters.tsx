@@ -1,37 +1,40 @@
 import React, { useState } from 'react';
 //Material UI
+import { Grid } from '@material-ui/core';
+import Pagination from '@material-ui/lab/Pagination';
+
 import { Character } from '../../classes'
 import { CharacterCard } from '../../components'
-import { Grid } from '@material-ui/core';
 import SearchBar from '../../components/SearchBar';
-import Pagination from '@material-ui/lab/Pagination';
-import { useStylesCharacters } from './StylesCharacters'
+import { useStylesCharacters } from './StylesCharacters';
+
 //Graphql
 import { GET_CHARACTERS } from '../../graphql/query';
-import { useQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client';
 
 import MainContainer from '../../container/MainContainer';
-
+import NoResults from '../../components/NoResults';
 
 function Characters(): JSX.Element {
    const classes = useStylesCharacters();
+
+   const [empty, setEmpty] = useState(false);
    const [page, setPage] = useState(1);
    const [search, setSearch] = useState("");
 
    const { loading, error, data, fetchMore } = useQuery(GET_CHARACTERS, {
-      variables: {
-         page, search
-      },
+      variables: { page: page, search }
    });
 
    const getCharacters = (page: number = 1, search: string = "") => {
-      if (fetchMore)
-         fetchMore({
-            variables: {
-               page: page,
-               search: search
-            },
-         });
+      fetchMore({
+         variables: { page: page, search: search },
+      }).then((response => {
+         console.log(response);
+         setEmpty(false);
+      })).catch(errors => {
+         setEmpty(true);
+      })
    }
 
    const handleChangePage = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -39,8 +42,11 @@ function Characters(): JSX.Element {
       getCharacters(value, search);
    };
 
-   const handleSearch = () => {
-      getCharacters(1, search);
+   const handleSearch = (search: string) => {
+      const newPage: number = 1;
+      setPage(newPage);
+      setSearch(search);
+      getCharacters(newPage, search);
    };
 
    if (loading) return <MainContainer>
@@ -48,10 +54,9 @@ function Characters(): JSX.Element {
    </MainContainer>
 
    if (error) return <MainContainer>
-      {`Error! ${error.message}`}
+      {`Error! ${error}`}
    </MainContainer>
 
-   //data.characters.results.map
    return (
       <MainContainer>
          <Grid container spacing={4}
@@ -60,10 +65,7 @@ function Characters(): JSX.Element {
             alignItems="stretch" >
 
             <Grid item>
-               <SearchBar
-                  search={search}
-                  setSearch={setSearch}
-                  onSearch={handleSearch} />
+               <SearchBar onSearch={handleSearch} />
             </Grid>
 
             <Grid item
@@ -72,11 +74,14 @@ function Characters(): JSX.Element {
                justify="flex-start"
                alignItems="center"
             >
-               <Pagination
-                  count={data?.characters?.info?.pages}
-                  page={page}
-                  onChange={handleChangePage}
-                  className={classes.root} />
+               {
+                  !empty &&
+                  <Pagination
+                     count={data?.characters?.info?.pages}
+                     page={page}
+                     onChange={handleChangePage}
+                     className={classes.root} />
+               }
             </Grid>
 
 
@@ -85,14 +90,17 @@ function Characters(): JSX.Element {
                alignItems="center">
 
                {
-                  data?.characters?.results?.map((item: Character) => {
-                     return <Grid item key={`item-card-character-${item.id}`}>
-                        <CharacterCard data={item} />
-                     </Grid>
-                  })
+                  empty && search !== "" ?
+                     <NoResults search={search} />
+                     :
+                     data?.characters?.results?.map((item: Character) => {
+                        return <Grid item key={`item-card-character-${item.id}`}>
+                           <CharacterCard data={item} />
+                        </Grid>
+                     })
+
                }
             </Grid>
-
          </Grid>
       </MainContainer >
    )

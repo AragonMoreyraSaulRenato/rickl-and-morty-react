@@ -46,7 +46,7 @@ export default function CharacterCard(props: ICharacterCard): JSX.Element {
             <CardContent
                className={classes.content}
                style={{ background: color || TEXT_WHITE_COLOR }}>
-               <Typography variant="h5" component="p" className={classes.characterName}>
+               <Typography variant="h6" component="p" className={classes.characterName}>
                   {data?.name}
                </Typography>
                <Typography variant="body2" component="p" className={classes.characterDetails} >

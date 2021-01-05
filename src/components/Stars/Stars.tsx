@@ -7,7 +7,7 @@ import "./Stars.css";
 
 const Stars = () => {
 	const params: object = Parametrers;
-	return <Particles params={params} />
+	return (<Particles params={params} />);
 };
 
 export default Stars;

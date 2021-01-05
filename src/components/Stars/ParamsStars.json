@@ -15,13 +15,13 @@
 			  "speed": 0.9
 		 },
 		 "size": {
-			  "value": 1
+			  "value": 1.5
 		 },
 		 "opacity": {
 			  "anim": {
 					"enable": true,
 					"speed": 1,
-					"opacity_min": 0.05
+					"opacity_min": 0.5
 			  }
 		 }
 	},

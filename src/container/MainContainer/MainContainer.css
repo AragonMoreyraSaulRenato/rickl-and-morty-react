@@ -1,29 +1,29 @@
 .Main-Container {
-  color: #ffffff;
-  margin-top: 64px;
-  padding: 36px;
-  flex: 1 1 0px;
-  z-index: 1;
+	color: #ffffff;
+	margin-top: 64px;
+	padding: 36px;
+	flex: 1 1 0px;
+	z-index: 1;
 }
 
 .Main-Container-Center {
-  justify-content: space-between;
-  align-items: center;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .Main-Container-Top {
-  justify-content: flex-start;
-  align-items: center;
-  direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	direction: column;
 }
 
 .Main-Item {
-  flex: 1 1 0px;
+	flex: 1 1 0px;
 }
 
 @media (max-width: 600px) {
-  .Main-Container {
-    margin-top: 56px;
-    padding: 36px;
-  }
+	.Main-Container {
+		margin-top: 56px;
+		padding: 36px;
+	}
 }

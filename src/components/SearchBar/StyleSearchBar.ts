@@ -25,6 +25,3 @@ export const useStyleSearchBar = makeStyles((theme: Theme) =>
 		},
 	})
 );
-
-/*
-} */

@@ -10,13 +10,16 @@ export default function MyRoutes() {
       <AppBar />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path={[
-          "/characters",
-          "/characters?:page/:search",
-          "/characters?:page",
-          "/characters?:search"
-        ]}
-          component={Characters} />
+        <Route
+          exact
+          path={[
+            "/characters",
+            "/characters?:page/:search",
+            "/characters?:page",
+            "/characters?:search",
+          ]}
+          component={Characters}
+        />
       </Switch>
     </Router>
   );

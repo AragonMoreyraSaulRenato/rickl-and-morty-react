@@ -1,17 +1,17 @@
-import React from 'react'
-import './CustomIcon.css'
+import React from "react";
+import "./CustomIcon.css";
 
 interface CustomIconProps {
-   children: JSX.Element | JSX.Element[],
-   to?: string,
+  children: JSX.Element | JSX.Element[];
+  to?: string;
 }
 
 function CustomIcon(props: CustomIconProps) {
-   return (
-      <a href={props.to} className="Custom-Icon" rel="noreferrer" target="_blank">
-         {props.children}
-      </a>
-   )
+  return (
+    <a href={props.to} className="Custom-Icon" rel="noreferrer" target="_blank">
+      {props.children}
+    </a>
+  );
 }
 
-export default CustomIcon
+export default CustomIcon;

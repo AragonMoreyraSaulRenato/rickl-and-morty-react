@@ -1,27 +1,27 @@
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { PRIMARY_COLOR } from '../../colors'
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { PRIMARY_COLOR } from "../../colors";
 
 export const useStyleAppBar = makeStyles((theme: Theme) =>
-	createStyles({
-		root: {
-			zIndex: 10,
-		},
-		appBar: {
-			backgroundColor: PRIMARY_COLOR
-		},
-		menuButton: {
-			marginRight: theme.spacing(2),
-		},
-		title: {
-			flexGrow: 1,
-		},
-		imageContainer: {
-			display: 'flex',
-			alignItems: 'center',
-			justifyContent: 'center',
-		},
-		imageLogo: {
-			maxHeight: 32
-		}
-	}),
+  createStyles({
+    root: {
+      zIndex: 10,
+    },
+    appBar: {
+      backgroundColor: PRIMARY_COLOR,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      flexGrow: 1,
+    },
+    imageContainer: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    imageLogo: {
+      maxHeight: 32,
+    },
+  })
 );

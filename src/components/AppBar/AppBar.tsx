@@ -27,15 +27,12 @@ export default function ButtonAppBar() {
 					<Typography variant="h6" className={classes.title}>
 						Rick and Morty App
 					</Typography>
+					<Button to="/memoram" color="inherit" component={Link}>
+						Memoram
+					</Button>
 					<Button to="/characters" color="inherit" component={Link}>
 						Characters
 					</Button>
-					{/* <Button to="/episodies" color="inherit" component={Link}>
-            Episodies
-          </Button>
-          <Button to="/locations" color="inherit" component={Link}>
-            Locations
-          </Button> */}
 				</Toolbar>
 			</AppBar>
 		</div>

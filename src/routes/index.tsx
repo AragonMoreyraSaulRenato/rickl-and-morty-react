@@ -3,24 +3,17 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AppBar from "../components/AppBar";
 import Characters from "../views/Characters";
 import Home from "../views/Home";
+import Memoram from "../views/Memoram";
 
 export default function MyRoutes() {
-  return (
-    <Router>
-      <AppBar />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route
-          exact
-          path={[
-            "/characters",
-            "/characters?:page/:search",
-            "/characters?:page",
-            "/characters?:search",
-          ]}
-          component={Characters}
-        />
-      </Switch>
-    </Router>
-  );
+	return (
+		<Router>
+			<AppBar />
+			<Switch>
+				<Route exact path="/" component={Home} />
+				<Route exact path={"/characters"} component={Characters} />
+				<Route exact path={"/memoram"} component={Memoram} />
+			</Switch>
+		</Router>
+	);
 }

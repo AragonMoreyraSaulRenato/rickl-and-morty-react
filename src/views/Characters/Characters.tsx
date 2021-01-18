@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, ReactElement } from "react";
 //Material UI
 import { Grid } from "@material-ui/core";
 import Pagination from "@material-ui/lab/Pagination";
@@ -15,7 +15,7 @@ import { useQuery } from "@apollo/client";
 import MainContainer from "../../container/MainContainer";
 import NoResults from "../../components/NoResults";
 
-function Characters(): JSX.Element | null {
+function Characters(): ReactElement | null {
 	const classes = useStylesCharacters();
 
 	const [empty, setEmpty] = useState(false);

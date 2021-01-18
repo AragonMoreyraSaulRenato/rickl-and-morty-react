@@ -17,3 +17,18 @@ export const GET_CHARACTERS = gql`
 		}
 	}
 `;
+
+export const GET_CHARACTERS_ONLY_IMG = gql`
+	query Characters($page: Int!) {
+		characters(page: $page) {
+			info {
+				count
+				pages
+			}
+			results {
+				id
+				image
+			}
+		}
+	}
+`;

@@ -6,8 +6,9 @@ export const useStyleMemoram = makeStyles((theme: Theme) =>
 			padding: 0,
 			listStyle: "none",
 			display: "flex",
-			maxWidth: 650,
+			maxWidth: 700,
 			flexWrap: "wrap",
+			justifyContent: "center",
 		},
 	})
 );

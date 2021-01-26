@@ -4,6 +4,7 @@ import useMemoramCharacters from "../../hooks/useMemoramCharacters";
 import MainContainer from "../../container/MainContainer";
 import { Character } from "../../classes";
 import CardMemoram from "../../components/CardMemoram/CardMemoram";
+import GameStatus from "../../components/GameStatus";
 
 export default function Memoram(): ReactElement {
 	const classes = useStyleMemoram();
@@ -26,7 +27,7 @@ export default function Memoram(): ReactElement {
 	if (loading) return <MainContainer>loading...</MainContainer>;
 
 	return (
-		<MainContainer top>
+		<MainContainer>
 			<div className={classes.container}>
 				{characters?.map((character: Character, index: number) => (
 					<CardMemoram
@@ -39,8 +40,7 @@ export default function Memoram(): ReactElement {
 					/>
 				))}
 			</div>
-
-			<div>Mejores puntuaciones</div>
+			<GameStatus intents={movement} />
 		</MainContainer>
 	);
 }

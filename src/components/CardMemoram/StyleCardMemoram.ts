@@ -1,5 +1,6 @@
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import MemoramImage from "../../assets/img/iconmemoram.jpg";
+import { SECONDARY_COLOR } from "../../colors";
 
 export const useStyleCardMemoram = makeStyles((theme: Theme) =>
 	createStyles({
@@ -9,7 +10,7 @@ export const useStyleCardMemoram = makeStyles((theme: Theme) =>
 			width: 120,
 			justifyContent: "center",
 			alignItems: "center",
-			margin: " 5px 5px",
+			margin: 10,
 			cursor: "pointer",
 			transformStyle: "preserve-3d",
 			transformOrigin: "center right",
@@ -22,7 +23,8 @@ export const useStyleCardMemoram = makeStyles((theme: Theme) =>
 			height: "100%",
 			textAlign: "center",
 			borderRadius: 20,
-			border: "2px solid #ffffff",
+			border: `2px solid ${SECONDARY_COLOR}`,
+			boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
 		},
 		flipContainer: {
 			placeSelf: "center",
